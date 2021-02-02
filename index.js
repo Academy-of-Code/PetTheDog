@@ -1,3 +1,7 @@
+let RNG_num=0;
+
+randomDoggo();
+
 let pets = 0;
 let PetsPerSecond = 0;
 
@@ -199,6 +203,26 @@ god_count = retrievedData.god_count
 
 
 display();
+}
+
+function randomDoggo(){
+let img1 = "https://www.thesprucepets.com/thmb/BA9iYSyeVlwqcS2anhIxla0vRFY=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/chihuahua-810789_1920-5c901437c9e77c0001ff0b4f.jpg"
+
+let img2 = "https://i.guim.co.uk/img/media/fe1e34da640c5c56ed16f76ce6f994fa9343d09d/0_174_3408_2046/master/3408.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=0d3f33fb6aa6e0154b7713a00454c83d"
+
+let img3 = "https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/dog_cool_summer_slideshow/1800x1200_dog_cool_summer_other.jpg"
+
+let img4 = "https://static.toiimg.com/thumb/msid-60132235,imgsize-169468,width-800,height-600,resizemode-75/60132235.jpg"
+
+let img5 = "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/smartest-dog-breeds-1553287693.jpg?crop=0.673xw:1.00xh;0.167xw,0&resize=640:*"
+
+
+	RNG_num = randomNum(1,5);
+  if(RNG_num===1){document.getElementById("rot").src = img1}
+  else if(RNG_num===2){document.getElementById("rot").src = img2}
+  else if(RNG_num===3){document.getElementById("rot").src = img3}
+  else if(RNG_num===4){document.getElementById("rot").src = img4}
+  else if(RNG_num===5){document.getElementById("rot").src = img5}
 }
 
 function ruinTheFun(){
