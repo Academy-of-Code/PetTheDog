@@ -4,6 +4,7 @@ randomDoggo();
 
 let pets = 0;
 let PetsPerSecond = 0;
+let PetsPerClick = 1;
 
 let hands_price = 1;
 let hands_count = 0;
@@ -40,6 +41,7 @@ function buy_hands(){
 if(pets >= hands_price)
 {
 pets=pets-hands_price
+PetsPerClick = PetsPerClick+5
 hands_count = hands_count+1
 hands_price = hands_price + randomNum(1,20) * hands_count - 30
 PetsPerSecond = PetsPerSecond+randomNum(1,6);
@@ -55,6 +57,7 @@ function buy_grooms(){
 if(pets >= groom_price && hands_count >= 10)
 {
 pets=pets-groom_price
+PetsPerClick = PetsPerClick+50
 groom_count = groom_count+1
 groom_price = groom_price + randomNum(50,200) * groom_count - 30
 PetsPerSecond = PetsPerSecond+randomNum(20,100);
@@ -70,6 +73,7 @@ function buy_treats(){
 if(pets >= treats_price && groom_count >= 5 && hands_count >= 10)
 {
 pets=pets-treats_price
+PetsPerClick = PetsPerClick+500
 treats_count = treats_count+1
 treats_price = treats_price + randomNum(300,1000) * treats_count - 30
 PetsPerSecond = PetsPerSecond+randomNum(100,400);
@@ -84,6 +88,7 @@ function buy_multiverse(){
 if(pets >= multiverse_price && groom_count >= 10  && hands_count >= 20 && treats_count >= 5)
 {
 pets=pets-multiverse_price
+PetsPerClick = PetsPerClick+5000
 multiverse_count = multiverse_count+1
 multiverse_price = multiverse_price * 10
 PetsPerSecond = PetsPerSecond*2
@@ -98,10 +103,10 @@ function buy_god(){
 if(pets >= god_price)
 {
 pets=pets-god_price
+PetsPerClick = PetsPerClick+10000
 god_count = god_count+1
 god_price = god_price*10
-PetsPerSecond = PetsPerSecond*10*10*10*10*10*10*10
-pets=pet*10
+PetsPerSecond = PetsPerSecond*10
 
 
 display();
@@ -123,10 +128,11 @@ if (hands_count >= 20 && groom_count >= 20 && treats_count >= 20 && multiverse_c
 
 document.getElementById("pets").innerHTML = pets+" Pets";
 document.getElementById("PPS").innerHTML = PetsPerSecond+" Pets per Second";
+document.getElementById("PPC").innerHTML = PetsPerClick+" Pets per Click"
 }
 
 function pet(){
-pets=pets+1
+pets=pets+PetsPerClick
 document.getElementById("pets").innerHTML = pets+' Pets'
 }
 
