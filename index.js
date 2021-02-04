@@ -2,6 +2,8 @@ let RNG_num=0;
 
 randomDoggo();
 
+let autoSaveTimer=0;
+
 let pets = 0;
 let PetsPerSecond = 0;
 let PetsPerClick = 1;
@@ -30,7 +32,7 @@ treats_element = document.getElementById("treats");
 multiverse_element = document.getElementById("multiverse");
 god_element = document.getElementById("god");
 
-setInterval("pets = pets+PetsPerSecond; display()",1000)
+setInterval("pets = pets+PetsPerSecond; display(); autoSave();",1000)
 
 document.getElementById("store").style.display='none';
 document.getElementById("store-button-hide").style.display='none';
@@ -134,6 +136,11 @@ document.getElementById("PPC").innerHTML = PetsPerClick+" Pets per Click"
 function pet(){
 pets=pets+PetsPerClick
 document.getElementById("pets").innerHTML = pets+' Pets'
+}
+
+function autoSave(){
+	if(autoSaveTimer != 59){autoSaveTimer = autoSaveTimer + 1; console.log(autoSaveTimer);}
+  else if(autoSaveTimer === 59){save(); autoSaveTimer = 0}
 }
 
 function clear(){
