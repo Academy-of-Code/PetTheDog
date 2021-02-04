@@ -17,6 +17,9 @@ let groom_count = 0;
 let treats_price = 2000;
 let treats_count = 0;
 
+let bathtub_price = 5000;
+let bathtub_count = 0;
+
 let multiverse_price = 500000;
 let multiverse_count = 0;
 
@@ -29,6 +32,7 @@ element = document.getElementById("rot");
 hands_element = document.getElementById("hands");
 groom_element = document.getElementById("groom");
 treats_element = document.getElementById("treats");
+bathtub_element = document.getElementById("bathtub")
 multiverse_element = document.getElementById("multiverse");
 god_element = document.getElementById("god");
 
@@ -86,8 +90,23 @@ display();
 
 }
 
+function buy_bathtub(){
+if(pets >= bathtub_price && treats_count >= 20 && groom_count >= 20 && hands_count >= 20)
+{
+pets=pets-bathtub_price
+PetsPerClick = PetsPerClick+1000
+bathtub_count = bathtub_count+1
+bathtub_price = bathtub_price + randomNum(300,1000) * bathtub_count - 30
+PetsPerSecond = PetsPerSecond+randomNum(1000,1700);
+
+
+display();
+}
+
+}
+
 function buy_multiverse(){
-if(pets >= multiverse_price && groom_count >= 10  && hands_count >= 20 && treats_count >= 5)
+if(pets >= multiverse_price && groom_count >= 20  && hands_count >= 40 && treats_count >= 10 && bathtub_count >= 5)
 {
 pets=pets-multiverse_price
 PetsPerClick = PetsPerClick+5000
@@ -124,7 +143,10 @@ if (hands_count >= 10){document.getElementById("groom").innerHTML = "Groom "+"("
 
 if (groom_count >= 5){document.getElementById("treats").innerHTML = "Treats "+"("+treats_price+")"+" *"+treats_count+"*";}else{}
 
-if (hands_count >= 20 && groom_count >= 10 && treats_count >= 5){document.getElementById("multiverse").innerHTML = "Multiverse "+"("+multiverse_price+")"+" *"+multiverse_count+"*";}else{}
+if (hands_count >= 20 && groom_count >= 20 && treats_count >= 20){document.getElementById("bathtub").innerHTML = "Bathtub "+"("+bathtub_price+")"+" *"+bathtub_count+"*";}else{}
+
+
+if (hands_count >= 40 && groom_count >= 20 && treats_count >= 10 && bathtub_count >= 5){document.getElementById("multiverse").innerHTML = "Multiverse "+"("+multiverse_price+")"+" *"+multiverse_count+"*";}else{}
 
 if (hands_count >= 20 && groom_count >= 20 && treats_count >= 20 && multiverse_count >= 1){document.getElementById("god").innerHTML = "God "+"("+god_price+")"+" *"+god_count+"*";}else{}
 
@@ -139,7 +161,7 @@ document.getElementById("pets").innerHTML = pets+' Pets'
 }
 
 function autoSave(){
-	if(autoSaveTimer != 59){autoSaveTimer = autoSaveTimer + 1; console.log(autoSaveTimer);}
+	if(autoSaveTimer != 59){autoSaveTimer = autoSaveTimer + 1}
   else if(autoSaveTimer === 59){save(); autoSaveTimer = 0}
 }
 
