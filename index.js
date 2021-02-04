@@ -3,6 +3,7 @@ let RNG_num=0;
 randomDoggo();
 
 let autoSaveTimer=0;
+let stashOn = false
 
 let pets = 0;
 let PetsPerSecond = 0;
@@ -182,6 +183,20 @@ document.getElementById("pets").innerHTML = pets+' Pets'
 function autoSave(){
 	if(autoSaveTimer != 59){autoSaveTimer = autoSaveTimer + 1}
   else if(autoSaveTimer === 59){save(); autoSaveTimer = 0}
+}
+
+function toggleStalinStash(){
+	if(stashOn == false){
+  	stashOn = true
+		document.getElementById("TSS").innerHTML = "Toggle Stash Off"
+    document.getElementById("rot").src = "StalinStashDog1.png"
+  }
+  
+  else if(stashOn == true){
+  	stashOn=false
+		document.getElementById("TSS").innerHTML = "Toggle Stash On"
+    randomDoggo();
+  }
 }
 
 function clear(){
