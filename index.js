@@ -11,7 +11,10 @@ let PetsPerClick = 1;
 let hands_price = 1;
 let hands_count = 0;
 
-let groom_price = 100;
+let tooth_comb_price = 75;
+let tooth_comb_count = 0;
+
+let groom_price = 200;
 let groom_count = 0;
 
 let treats_price = 2000;
@@ -58,9 +61,23 @@ display();
 
 }
 
+function buy_tooth_comb(){
+if(pets >= tooth_comb_price && hands_count >= 2)
+{
+pets=pets-tooth_comb_price
+PetsPerClick = PetsPerClick+75
+tooth_comb_count = tooth_comb_count+1
+tooth_comb_price = tooth_comb_price+randomNum(75,100) * tooth_comb_count - 30
+PetsPerSecond = PetsPerSecond+randomNum(50,300);
+
+
+display();
+}
+
+}
 
 function buy_grooms(){
-if(pets >= groom_price && hands_count >= 10)
+if(pets >= groom_price && hands_count >= 10 && tooth_comb_count >= 1)
 {
 pets=pets-groom_price
 PetsPerClick = PetsPerClick+50
@@ -76,7 +93,7 @@ display();
 
 
 function buy_treats(){
-if(pets >= treats_price && groom_count >= 5 && hands_count >= 10)
+if(pets >= treats_price && groom_count >= 5 && hands_count >= 10 && tooth_comb_count >= 1)
 {
 pets=pets-treats_price
 PetsPerClick = PetsPerClick+500
@@ -91,7 +108,7 @@ display();
 }
 
 function buy_bathtub(){
-if(pets >= bathtub_price && treats_count >= 20 && groom_count >= 20 && hands_count >= 20)
+if(pets >= bathtub_price && treats_count >= 20 && groom_count >= 20 && hands_count >= 20&& tooth_comb_count >= 1)
 {
 pets=pets-bathtub_price
 PetsPerClick = PetsPerClick+1000
@@ -106,7 +123,7 @@ display();
 }
 
 function buy_multiverse(){
-if(pets >= multiverse_price && groom_count >= 20  && hands_count >= 40 && treats_count >= 10 && bathtub_count >= 5)
+if(pets >= multiverse_price && groom_count >= 20  && hands_count >= 40 && treats_count >= 10 && bathtub_count >= 5 && tooth_comb_count >= 1)
 {
 pets=pets-multiverse_price
 PetsPerClick = PetsPerClick+5000
@@ -138,6 +155,8 @@ display();
 function display(){
 
 document.getElementById("hands").innerHTML = "Hands "+"("+hands_price+")"+" *"+hands_count+"*";
+
+if (hands_count >= 5){document.getElementById("tooth_comb").innerHTML = "Tooth Comb "+"("+tooth_comb_price+")"+" *"+tooth_comb_count+"*";}else{}
 
 if (hands_count >= 10){document.getElementById("groom").innerHTML = "Groom "+"("+groom_price+")"+" *"+groom_count+"*";}else{}
 
@@ -175,6 +194,9 @@ override_storage.PetsPerClick = 0
 override_storage.hands_price = 1
 override_storage.hands_count = 0
 
+override_storage.tooth_comb_price = 0
+override_storage.tooth_comb_count = 0
+
 override_storage.groom_price = 100
 override_storage.groom_count = 0
 
@@ -199,6 +221,9 @@ raw_data.PetsPerClick = PetsPerClick
 
 raw_data.hands_price = hands_price
 raw_data.hands_count = hands_count
+
+raw_data.tooth_comb_price = tooth_comb_price
+raw_data.tooth_comb_count = tooth_comb_count
 
 raw_data.groom_price = groom_price
 raw_data.groom_count = groom_count
@@ -226,6 +251,9 @@ PetsPerClick = retrievedData.PetsPerClick
 
 hands_price = retrievedData.hands_price
 hands_count = retrievedData.hands_count
+
+tooth_comb_price = retrievedData.tooth_comb_price
+tooth_comb_count = retrievedData.tooth_comb_count
 
 groom_price = retrievedData.groom_price
 groom_count = retrievedData.groom_count
