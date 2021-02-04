@@ -141,6 +141,7 @@ const override_storage = new Object();
 
 override_storage.pets = 0
 override_storage.PetsPerSecond = 0
+override_storage.PetsPerClick = 0
 
 override_storage.hands_price = 1
 override_storage.hands_count = 0
@@ -165,6 +166,7 @@ function save(){
 var raw_data =  new Object();
 raw_data.pets = pets
 raw_data.PetsPerSecond = PetsPerSecond
+raw_data.PetsPerClick = PetsPerClick
 
 raw_data.hands_price = hands_price
 raw_data.hands_count = hands_count
@@ -191,6 +193,7 @@ var retrievedData = JSON.parse(retrievedObject);
 
 pets = retrievedData.pets
 PetsPerSecond = retrievedData.PetsPerSecond
+PetsPerClick = retrievedData.PetsPerClick
 
 hands_price = retrievedData.hands_price
 hands_count = retrievedData.hands_count
